@@ -25,3 +25,13 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    robolectric_version = "4.2.1"
+    test_runner_version = "1.1.0"
+    test_core_version = "1.1.0"
+    test_junit_version = "1.1.0"
+    test_rules_version = "1.1.0"
+    espresso_core_version = "3.1.0"
+    espresso_intents_version = "3.1.0"
+}
