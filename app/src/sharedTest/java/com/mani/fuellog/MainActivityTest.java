@@ -2,7 +2,6 @@ package com.mani.fuellog;
 
 import android.widget.TextView;
 
-import androidx.lifecycle.Lifecycle;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -20,19 +19,19 @@ public class MainActivityTest {
 
     @Test
     public void shouldHome() {
-        //ActivityScenario<MainActivity> j = ActivityScenario.launch(MainActivity.class);
+        ActivityScenario<MainActivity> mainActivityActivityScenario = ActivityScenario.launch(MainActivity.class);
 
-        /*j.moveToState(Lifecycle.State.CREATED);
 
-        j.onActivity(new ActivityScenario.ActivityAction<MainActivity>() {
+        mainActivityActivityScenario.onActivity(new ActivityScenario.ActivityAction<MainActivity>() {
             @Override
             public void perform(MainActivity activity) {
-                assertEquals(((TextView)activity.findViewById(R.id.message)).getText().toString(),"something");
+                assertEquals(((TextView)activity.findViewById(R.id.message)).getText().toString(),"Home");
 
             }
-        });*/
+        });
 
-       // onView(withId(R.id.message)).perform(click());
+        onView(withId(R.id.message)).perform(click());
+
 
     }
 
