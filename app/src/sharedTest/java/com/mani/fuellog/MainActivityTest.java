@@ -26,20 +26,20 @@ public class MainActivityTest {
     }
 
     @Test
-    public void shouldDisplayHomeOnLaunch() {
+    public void shouldDisplay_Home_OnLaunch() {
         onView(withId(R.id.home_root_layout)).check(matches(isDisplayed()));
     }
 
 
     @Test
-    public void shouldNotDisplayDashboardOnLaunch() {
+    public void shouldNotDisplay_Dashboard_OnLaunch() {
         onView(withId(R.id.dashboard_root_layout)).check(matches(not(isDisplayed())));
     }
 
 
 
     @Test
-    public void shouldDisplayDashboardOnDashboardClick() {
+    public void shouldDisplay_Dashboard_OnDashboardClick() {
         onView(withId(R.id.navigation_dashboard)).perform(click());
 
         onView(withId(R.id.dashboard_root_layout)).check(matches(isDisplayed()));
@@ -47,11 +47,10 @@ public class MainActivityTest {
     }
 
     @Test
-    public void shouldNotDisplayHomeOnDashboardClick() {
+    public void shouldNotDisplay_Home_OnDashboardClick() {
         onView(withId(R.id.navigation_dashboard)).perform(click());
 
         onView(withId(R.id.home_root_layout)).check(matches(not(isDisplayed())));
-
     }
 
 }
