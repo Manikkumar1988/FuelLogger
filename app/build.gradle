@@ -32,9 +32,9 @@ android {
         androidTest {
             java.srcDirs += "src/sharedTest/java"
         }
-        /*test {
+        test {
             java.srcDirs += "src/sharedTest/java"
-        }*/
+        }
     }
 }
 
