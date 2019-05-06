@@ -74,6 +74,8 @@ jacoco {
 
 }
 
+tasks.withType(Test) { jacoco.includeNoLocationClasses = true }
+
 
 
 task jacocoTestReport(type: JacocoReport) {

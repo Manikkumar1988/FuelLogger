@@ -25,7 +25,7 @@ public class MainActivityTest {
         mainActivityActivityScenario.onActivity(new ActivityScenario.ActivityAction<MainActivity>() {
             @Override
             public void perform(MainActivity activity) {
-                assertEquals(((TextView)activity.findViewById(R.id.message)).getText().toString(),"Home");
+                assertEquals(((TextView)activity.findViewById(R.id.message)).getText().toString(),"Hom");
             }
         });
 
