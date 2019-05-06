@@ -26,7 +26,6 @@ public class MainActivityTest {
             @Override
             public void perform(MainActivity activity) {
                 assertEquals(((TextView)activity.findViewById(R.id.message)).getText().toString(),"Home");
-                onView(withId(R.id.message)).perform(click());
             }
         });
 
