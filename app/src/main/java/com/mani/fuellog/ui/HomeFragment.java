@@ -1,4 +1,4 @@
-package com.mani.fuellog;
+package com.mani.fuellog.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,8 +12,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.mani.fuellog.R;
 import com.mani.fuellog.viewmodel.FuelLogViewModel;
-import com.mani.fuellog.viewmodel.FuelStat;
+import com.mani.fuellog.domain.FuelStat;
 
 import java.util.Objects;
 

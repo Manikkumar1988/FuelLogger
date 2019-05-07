@@ -8,8 +8,9 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.MutableLiveData;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import com.mani.fuellog.ui.HomeFragment;
 import com.mani.fuellog.viewmodel.FuelLogViewModel;
-import com.mani.fuellog.viewmodel.FuelStat;
+import com.mani.fuellog.domain.FuelStat;
 import com.mani.fuellog.viewmodel.ViewModelUtil;
 
 import org.junit.Before;

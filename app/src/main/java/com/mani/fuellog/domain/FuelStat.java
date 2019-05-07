@@ -1,4 +1,4 @@
-package com.mani.fuellog.viewmodel;
+package com.mani.fuellog.domain;
 
 public class FuelStat {
     private Double averageConsumption, drivingCost;

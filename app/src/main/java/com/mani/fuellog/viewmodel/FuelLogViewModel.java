@@ -7,6 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.mani.fuellog.domain.FuelStat;
+
 public class FuelLogViewModel extends AndroidViewModel {
 
     private MutableLiveData<FuelStat> averageFuelConsumption = new MutableLiveData<>();

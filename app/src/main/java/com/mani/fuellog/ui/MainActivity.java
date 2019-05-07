@@ -1,8 +1,9 @@
-package com.mani.fuellog;
+package com.mani.fuellog.ui;
 
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mani.fuellog.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
