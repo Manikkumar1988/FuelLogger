@@ -14,10 +14,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.mani.fuellog.viewmodel.FuelLogViewModel;
 
+import java.util.Objects;
+
 public class HomeFragment extends Fragment {
 
     private ViewModelProvider.Factory fuelLogViewModelFactory;
     private FuelLogViewModel fuelLogViewModel;
+
+    private TextView averageConsumptionValue;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -34,7 +38,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        averageConsumptionValue = view.findViewById(R.id.average_consumption_value);
         return view;
     }
 
@@ -52,7 +56,11 @@ public class HomeFragment extends Fragment {
         fuelLogViewModel.getAverageFuelConsumption().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
-                ((TextView)getView().findViewById(R.id.average_consumption_value)).setText(String.valueOf(aDouble));
+                if(Objects.isNull(aDouble)) {
+                    averageConsumptionValue.setText(getText(R.string.empty_value));
+                } else {
+                    averageConsumptionValue.setText(String.valueOf(aDouble));
+                }
             }
         });
     }
