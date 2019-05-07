@@ -26,14 +26,14 @@ import static org.mockito.Mockito.when;
 public class HomeFragmentTest {
 
     @Mock
-    FuelLogViewModel fuelLogViewModel;
+    private FuelLogViewModel fuelLogViewModel;
 
     private MutableLiveData<Double> doubleMutableLiveData = new MutableLiveData<>();
     private FragmentScenario<HomeFragment> homeFragmentFragmentScenario;
 
 
     @Before
-    public void setup() {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
 
         when(fuelLogViewModel.getAverageFuelConsumption()).thenReturn(doubleMutableLiveData);
@@ -53,6 +53,7 @@ public class HomeFragmentTest {
     @Test
     public void shouldDisplay_averageConsumptionValue_postedOnMutableLiveData() {
         doubleMutableLiveData.postValue(4.5d);
+
         onView(withId(R.id.average_consumption_value)).check(matches(withText("4.5")));
     }
 

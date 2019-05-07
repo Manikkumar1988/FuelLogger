@@ -13,7 +13,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class FuelLogViewModelTest {
 
     @Mock
-    Application application;
+    private Application application;
 
     @Before
     public void setUp() {

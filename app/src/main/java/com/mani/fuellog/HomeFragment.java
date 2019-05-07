@@ -16,8 +16,8 @@ import com.mani.fuellog.viewmodel.FuelLogViewModel;
 
 public class HomeFragment extends Fragment {
 
-    ViewModelProvider.Factory fuelLogViewModelFactory;
-    FuelLogViewModel fuelLogViewModel;
+    private ViewModelProvider.Factory fuelLogViewModelFactory;
+    private FuelLogViewModel fuelLogViewModel;
 
     public HomeFragment() {
         // Required empty public constructor

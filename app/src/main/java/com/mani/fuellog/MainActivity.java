@@ -14,10 +14,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    final Fragment fragment1 = new HomeFragment();
-    final Fragment fragment2 = new DashboardFragment();
-    final FragmentManager fm = getSupportFragmentManager();
-    Fragment active = fragment1;
+    private final Fragment fragment1 = new HomeFragment();
+    private final Fragment fragment2 = new DashboardFragment();
+    private final FragmentManager fm = getSupportFragmentManager();
+    private Fragment active = fragment1;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
                     fm.beginTransaction().hide(active).show(fragment2).commit();
                     active = fragment2;
                     return true;
+                    default:
+                        return false;
             }
-            return false;
         }
     };
 
