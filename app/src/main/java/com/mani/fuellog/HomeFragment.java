@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.mani.fuellog.viewmodel.FuelLogViewModel;
+import com.mani.fuellog.viewmodel.FuelStat;
 
 import java.util.Objects;
 
@@ -21,7 +22,7 @@ public class HomeFragment extends Fragment {
     private ViewModelProvider.Factory fuelLogViewModelFactory;
     private FuelLogViewModel fuelLogViewModel;
 
-    private TextView averageConsumptionValue;
+    private TextView averageConsumptionValue, drivingCost, totalDistance, totalAmouunt, totalFuelConsumption;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -38,8 +39,18 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        averageConsumptionValue = view.findViewById(R.id.average_consumption_value);
+
+        initializeViews(view);
+
         return view;
+    }
+
+    private void initializeViews(View view) {
+        averageConsumptionValue = view.findViewById(R.id.average_consumption_value);
+        drivingCost = view.findViewById(R.id.driving_cost_value);
+        totalDistance = view.findViewById(R.id.total_distance_value);
+        totalAmouunt = view.findViewById(R.id.total_amount_value);
+        totalFuelConsumption = view.findViewById(R.id.total_consumption_value);
     }
 
 
@@ -53,13 +64,21 @@ public class HomeFragment extends Fragment {
     }
 
     private void observeForAverageConsumption() {
-        fuelLogViewModel.getAverageFuelConsumption().observe(this, new Observer<Double>() {
+        fuelLogViewModel.getAverageFuelConsumption().observe(this, new Observer<FuelStat>() {
             @Override
-            public void onChanged(Double aDouble) {
-                if(Objects.isNull(aDouble)) {
+            public void onChanged(FuelStat fuelStat) {
+                if(Objects.isNull(fuelStat)) {
                     averageConsumptionValue.setText(getText(R.string.empty_value));
+                    drivingCost.setText(getText(R.string.empty_value));
+                    totalDistance.setText(getText(R.string.empty_value));
+                    totalAmouunt.setText(getText(R.string.empty_value));
+                    totalFuelConsumption.setText(getText(R.string.empty_value));
                 } else {
-                    averageConsumptionValue.setText(String.valueOf(aDouble));
+                    averageConsumptionValue.setText(String.valueOf(fuelStat.getAverageConsumption()));
+                    drivingCost.setText(String.valueOf(fuelStat.getDrivingCost()));
+                    totalDistance.setText(String.valueOf(fuelStat.getTotalDistance()));
+                    totalAmouunt.setText(String.valueOf(fuelStat.getTotalAmount()));
+                    totalFuelConsumption.setText(String.valueOf(fuelStat.getTotalFuelConsumption()));
                 }
             }
         });

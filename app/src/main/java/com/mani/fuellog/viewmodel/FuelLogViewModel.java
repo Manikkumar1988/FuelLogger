@@ -9,13 +9,13 @@ import androidx.lifecycle.MutableLiveData;
 
 public class FuelLogViewModel extends AndroidViewModel {
 
-    private MutableLiveData<Double> averageFuelConsumption = new MutableLiveData<>();
+    private MutableLiveData<FuelStat> averageFuelConsumption = new MutableLiveData<>();
 
     public FuelLogViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<Double> getAverageFuelConsumption() {
+    public LiveData<FuelStat> getAverageFuelConsumption() {
         return averageFuelConsumption;
     }
 }

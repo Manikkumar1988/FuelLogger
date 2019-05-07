@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.mani.fuellog.viewmodel.FuelLogViewModel;
+import com.mani.fuellog.viewmodel.FuelStat;
 import com.mani.fuellog.viewmodel.ViewModelUtil;
 
 import org.junit.Before;
@@ -29,7 +30,7 @@ public class HomeFragmentTest {
     @Mock
     private FuelLogViewModel fuelLogViewModel;
 
-    private MutableLiveData<Double> doubleMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<FuelStat> doubleMutableLiveData = new MutableLiveData<>();
 
 
     @Before
@@ -51,9 +52,14 @@ public class HomeFragmentTest {
 
     @Test
     public void shouldDisplay_averageConsumptionValue_postedValidDoubleOnMutableLiveData() {
-        doubleMutableLiveData.postValue(4.5d);
+        doubleMutableLiveData.postValue(new FuelStat(4.5d,4.5d,0,0,0));
 
         onView(withId(R.id.average_consumption_value)).check(matches(withText("4.5")));
+        onView(withId(R.id.driving_cost_value)).check(matches(withText("4.5")));
+        onView(withId(R.id.total_distance_value)).check(matches(withText("0")));
+        onView(withId(R.id.total_amount_value)).check(matches(withText("0")));
+        onView(withId(R.id.total_consumption_value)).check(matches(withText("0")));
+
     }
 
     @Test
@@ -61,6 +67,10 @@ public class HomeFragmentTest {
         doubleMutableLiveData.postValue(null);
 
         onView(withId(R.id.average_consumption_value)).check(matches(withText("--")));
+        onView(withId(R.id.driving_cost_value)).check(matches(withText("--")));
+        onView(withId(R.id.total_distance_value)).check(matches(withText("--")));
+        onView(withId(R.id.total_amount_value)).check(matches(withText("--")));
+        onView(withId(R.id.total_consumption_value)).check(matches(withText("--")));
     }
 
 }

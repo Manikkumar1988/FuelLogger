@@ -2,7 +2,10 @@
     <string name="app_name">Fuel Log</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="average_consumption">AVERAGE CONSUMPTION: </string>
     <string name="empty_value">--</string>
+    <string name="driving_cost">DRIVING COST</string>
+    <string name="total_distance">Total Distance</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="total_consumption">Total Consumption</string>
 </resources>
