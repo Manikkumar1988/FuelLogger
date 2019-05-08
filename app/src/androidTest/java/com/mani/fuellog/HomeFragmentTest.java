@@ -1,6 +1,7 @@
 package com.mani.fuellog;
 
 import androidx.annotation.NonNull;
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentFactory;
 import androidx.fragment.app.testing.FragmentScenario;
@@ -14,7 +15,9 @@ import com.mani.fuellog.domain.FuelStat;
 import com.mani.fuellog.viewmodel.ViewModelUtil;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -27,6 +30,9 @@ import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
 public class HomeFragmentTest {
+
+    @Rule
+    TestRule testRule = new InstantTaskExecutorRule();
 
     @Mock
     private FuelLogViewModel fuelLogViewModel;

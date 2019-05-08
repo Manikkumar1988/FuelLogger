@@ -54,12 +54,14 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$test_junit_version" // 1.1.0
     androidTestImplementation "androidx.test:rules:$test_rules_version" // 1.1.0
     androidTestImplementation "org.mockito:mockito-android:2.15.0"
+    androidTestImplementation "android.arch.core:core-testing:1.1.1"
 
     testImplementation "androidx.test:runner:$test_runner_version" // 1.1.0
     testImplementation "androidx.test:core:$test_core_version" // 1.1.0
     testImplementation "androidx.test.ext:junit:$test_junit_version" // 1.1.0
     testImplementation "androidx.test:rules:$test_rules_version" // 1.1.0
     testImplementation 'org.mockito:mockito-core:2.15.0'
+    testImplementation "android.arch.core:core-testing:1.1.1"
 
     // Espresso
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version" //3.1.0
