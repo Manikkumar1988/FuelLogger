@@ -1,6 +1,7 @@
 package com.mani.fuellog;
 
 import androidx.annotation.NonNull;
+import androidx.arch.core.executor.testing.CountingTaskExecutorRule;
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentFactory;
@@ -22,6 +23,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -32,7 +36,7 @@ import static org.mockito.Mockito.when;
 public class HomeFragmentTest {
 
     @Rule
-    TestRule testRule = new InstantTaskExecutorRule();
+    private CountingTaskExecutorRule testRule = new CountingTaskExecutorRule();
 
     @Mock
     private FuelLogViewModel fuelLogViewModel;
@@ -61,6 +65,14 @@ public class HomeFragmentTest {
     public void shouldDisplay_averageConsumptionValue_postedValidDoubleOnMutableLiveData() {
         doubleMutableLiveData.postValue(new FuelStat(4.5d,4.5d,0,0,0));
 
+        try {
+            testRule.drainTasks(3, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+
         onView(withId(R.id.average_consumption_value)).check(matches(withText("4.5")));
         onView(withId(R.id.driving_cost_value)).check(matches(withText("4.5")));
         onView(withId(R.id.total_distance_value)).check(matches(withText("0")));
@@ -72,6 +84,14 @@ public class HomeFragmentTest {
     @Test
     public void shouldDisplay_averageConsumptionValue_postedNullOnMutableLiveData() {
         doubleMutableLiveData.postValue(null);
+
+        try {
+            testRule.drainTasks(3, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
 
         onView(withId(R.id.average_consumption_value)).check(matches(withText("--")));
         onView(withId(R.id.driving_cost_value)).check(matches(withText("--")));
