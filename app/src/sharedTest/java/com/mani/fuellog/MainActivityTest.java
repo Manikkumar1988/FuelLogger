@@ -19,12 +19,10 @@ import static org.hamcrest.CoreMatchers.not;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
-    private ActivityScenario<MainActivity> mainActivityActivityScenario;
 
     @Before
     public void setUp() {
-         mainActivityActivityScenario = ActivityScenario.launch(MainActivity.class);
-
+         ActivityScenario.launch(MainActivity.class);
     }
 
     @Test
