@@ -67,10 +67,19 @@ dependencies {
     // Espresso
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version" //3.1.0
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso_intents_version" //3.1.0
+    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:2.0') {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
 
     testImplementation "androidx.test.espresso:espresso-core:$espresso_core_version" //3.1.0
     testImplementation "androidx.test.espresso:espresso-intents:$espresso_intents_version" //3.1.0
-
+    testImplementation('com.android.support.test.espresso:espresso-contrib:2.0') {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
     debugImplementation 'androidx.fragment:fragment-testing:1.1.0-alpha08'
 }
 
@@ -80,8 +89,10 @@ jacoco {
 
 }
 
-tasks.withType(Test) { jacoco.includeNoLocationClasses = true }
-
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+    jacoco.excludes = ['jdk.internal.*']
+}
 
 
 task jacocoTestReport(type: JacocoReport) {
