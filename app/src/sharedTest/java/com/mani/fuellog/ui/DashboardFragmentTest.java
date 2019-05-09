@@ -56,13 +56,13 @@ public class DashboardFragmentTest {
     @Test
     public void scrollToItemBelowFold_checkItsText() {
         onView(ViewMatchers.withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(3, click()));
+                .perform(RecyclerViewActions.scrollToPosition(3));
 
         String itemElementText = "Item3";
         onView(withText(itemElementText)).check(matches(isDisplayed()));
     }
 
-    @Test
+    /*@Test
     public void itemInMiddleOfList_hasSpecialText() {
         // First, scroll to the view holder using the isInTheMiddle matcher.
         onView(ViewMatchers.withId(R.id.recyclerView))
@@ -73,9 +73,9 @@ public class DashboardFragmentTest {
         onView(withText(middleElementText)).check(matches(isDisplayed()));
     }
 
-    /**
+    *//**
      * Matches the {@link CustomAdapter.ViewHolder}s in the middle of the list.
-     */
+     *//*
     private static Matcher<CustomAdapter.ViewHolder> isInTheMiddle() {
         return new TypeSafeMatcher<CustomAdapter.ViewHolder>() {
             @Override
@@ -88,5 +88,5 @@ public class DashboardFragmentTest {
                 description.appendText("item in the middle");
             }
         };
-    }
+    }*/
 }
