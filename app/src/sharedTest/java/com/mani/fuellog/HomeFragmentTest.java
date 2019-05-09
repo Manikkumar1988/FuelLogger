@@ -35,8 +35,8 @@ import static org.mockito.Mockito.when;
 @RunWith(AndroidJUnit4.class)
 public class HomeFragmentTest {
 
-    @Rule
-    private CountingTaskExecutorRule testRule = new CountingTaskExecutorRule();
+//    @Rule
+//    private CountingTaskExecutorRule testRule = new CountingTaskExecutorRule();
 
     @Mock
     private FuelLogViewModel fuelLogViewModel;
@@ -65,13 +65,13 @@ public class HomeFragmentTest {
     public void shouldDisplay_averageConsumptionValue_postedValidDoubleOnMutableLiveData() {
         doubleMutableLiveData.postValue(new FuelStat(4.5d,4.5d,0,0,0));
 
-        try {
-            testRule.drainTasks(3, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            testRule.drainTasks(3, TimeUnit.MILLISECONDS);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (TimeoutException e) {
+//            e.printStackTrace();
+//        }
 
         onView(withId(R.id.average_consumption_value)).check(matches(withText("4.5")));
         onView(withId(R.id.driving_cost_value)).check(matches(withText("4.5")));
@@ -85,13 +85,13 @@ public class HomeFragmentTest {
     public void shouldDisplay_averageConsumptionValue_postedNullOnMutableLiveData() {
         doubleMutableLiveData.postValue(null);
 
-        try {
-            testRule.drainTasks(3, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            testRule.drainTasks(3, TimeUnit.MILLISECONDS);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (TimeoutException e) {
+//            e.printStackTrace();
+//        }
 
         onView(withId(R.id.average_consumption_value)).check(matches(withText("--")));
         onView(withId(R.id.driving_cost_value)).check(matches(withText("--")));
