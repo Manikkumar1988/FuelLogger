@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentFactory;
 import androidx.fragment.app.testing.FragmentScenario;
-import androidx.lifecycle.Lifecycle;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -13,23 +12,16 @@ import com.mani.fuellog.R;
 import com.mani.fuellog.viewmodel.FuelLogViewModel;
 import com.mani.fuellog.viewmodel.ViewModelUtil;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
 public class DashboardFragmentTest {
@@ -58,7 +50,7 @@ public class DashboardFragmentTest {
         onView(ViewMatchers.withId(R.id.recyclerView))
                 .perform(RecyclerViewActions.scrollToPosition(3));
 
-        String itemElementText = "Item3";
+        String itemElementText = "Item0";
         onView(withText(itemElementText)).check(matches(isDisplayed()));
     }
 
