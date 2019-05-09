@@ -12,6 +12,9 @@ import com.mani.fuellog.R;
 import com.mani.fuellog.viewmodel.FuelLogViewModel;
 import com.mani.fuellog.viewmodel.ViewModelUtil;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,11 +38,20 @@ public class DashboardFragmentTest {
         MockitoAnnotations.initMocks(this);
 
 
-        FragmentScenario.launchInContainer(DashboardFragment.class,null,new FragmentFactory(){
+        FragmentScenario<DashboardFragment> dashboardFragmentFragmentScenario = FragmentScenario.launchInContainer(DashboardFragment.class,null,new FragmentFactory(){
             @NonNull
             @Override
             public Fragment instantiate(@NonNull ClassLoader classLoader, @NonNull String className) {
                 return DashboardFragment.newInstance(ViewModelUtil.createFor(fuelLogViewModel));
+            }
+        });
+
+
+        dashboardFragmentFragmentScenario.onFragment(new FragmentScenario.FragmentAction<DashboardFragment>() {
+            @Override
+            public void perform(@NonNull DashboardFragment fragment) {
+                fragment.getView().measure(0,0);
+                fragment.getView().layout(0,0,100,1000);
             }
         });
     }
@@ -50,11 +62,11 @@ public class DashboardFragmentTest {
         onView(ViewMatchers.withId(R.id.recyclerView))
                 .perform(RecyclerViewActions.scrollToPosition(3));
 
-        String itemElementText = "Item0";
+        String itemElementText = "Item3";
         onView(withText(itemElementText)).check(matches(isDisplayed()));
     }
 
-    /*@Test
+    @Test
     public void itemInMiddleOfList_hasSpecialText() {
         // First, scroll to the view holder using the isInTheMiddle matcher.
         onView(ViewMatchers.withId(R.id.recyclerView))
@@ -65,9 +77,9 @@ public class DashboardFragmentTest {
         onView(withText(middleElementText)).check(matches(isDisplayed()));
     }
 
-    *//**
+    /**
      * Matches the {@link CustomAdapter.ViewHolder}s in the middle of the list.
-     *//*
+     */
     private static Matcher<CustomAdapter.ViewHolder> isInTheMiddle() {
         return new TypeSafeMatcher<CustomAdapter.ViewHolder>() {
             @Override
@@ -80,5 +92,5 @@ public class DashboardFragmentTest {
                 description.appendText("item in the middle");
             }
         };
-    }*/
+    }
 }
