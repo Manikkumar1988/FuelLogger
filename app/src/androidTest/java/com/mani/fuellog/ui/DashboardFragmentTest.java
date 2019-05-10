@@ -48,14 +48,6 @@ public class DashboardFragmentTest {
             }
         });
 
-
-        dashboardFragmentFragmentScenario.onFragment(new FragmentScenario.FragmentAction<DashboardFragment>() {
-            @Override
-            public void perform(@NonNull DashboardFragment fragment) {
-                fragment.getView().measure(0,0);
-                fragment.getView().layout(0,0,100,1000);
-            }
-        });
     }
 
 
