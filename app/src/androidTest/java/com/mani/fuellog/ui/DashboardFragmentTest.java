@@ -9,6 +9,8 @@ import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.mani.fuellog.R;
+import com.mani.fuellog.ui.CustomAdapter;
+import com.mani.fuellog.ui.DashboardFragment;
 import com.mani.fuellog.viewmodel.FuelLogViewModel;
 import com.mani.fuellog.viewmodel.ViewModelUtil;
 
