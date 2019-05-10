@@ -26,6 +26,10 @@ public class FuelLogs {
         return totalConsumption/totalDistance;
     }
 
+    public void delete(FuelLog fuelLog) {
+        fuelLogList.remove(fuelLog);
+    }
+
     private boolean isFirstFillUp(long totalDistance) {
         return totalDistance == 0;
     }

@@ -45,4 +45,25 @@ public class FuelLogsTest {
         assertEquals(0.033,averageConsumption,0.2d);
 
     }
+
+
+    @Test
+    public void delete_shouldDelete_passingTime() {
+
+        FuelLog secondFillUp = new FuelLog(4087,87,System.currentTimeMillis(),2.44,81.0);
+        FuelLog thirdFillUp = new FuelLog(4222,135,System.currentTimeMillis() + 1000,2.40,83.0);
+
+        fuelLogs.addTo(new FuelLog(4000,0,System.currentTimeMillis()+ 3000,2.54,81.0));
+        fuelLogs.addTo(secondFillUp);
+        fuelLogs.addTo(thirdFillUp);
+
+
+        fuelLogs.delete(secondFillUp);
+        fuelLogs.delete(thirdFillUp);
+        double averageConsumption =  fuelLogs.averageConsumption();
+
+
+        assertEquals(0,averageConsumption,0.0d);
+
+    }
 }

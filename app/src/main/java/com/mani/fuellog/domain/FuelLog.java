@@ -1,14 +1,16 @@
 package com.mani.fuellog.domain;
 
+import androidx.annotation.Nullable;
+
 public class FuelLog {
     private int currentOdometer;
     private int diffInOdometer;
-    private double refuellingDate;
+    private long refuellingDate;
     private double fuelVolume;
     private double fuelUnitPrice;
     private double fuelVolumePrice;
 
-    public FuelLog(int currentOdometer, int diffInOdometer, double refuellingDate, double fuelVolume, double fuelUnitPrice) {
+    public FuelLog(int currentOdometer, int diffInOdometer, long refuellingDate, double fuelVolume, double fuelUnitPrice) {
         this.currentOdometer = currentOdometer;
         this.diffInOdometer = diffInOdometer;
         this.refuellingDate = refuellingDate;
@@ -38,7 +40,7 @@ public class FuelLog {
         return refuellingDate;
     }
 
-    public void setRefuellingDate(double refuellingDate) {
+    public void setRefuellingDate(long refuellingDate) {
         this.refuellingDate = refuellingDate;
     }
 
@@ -64,5 +66,14 @@ public class FuelLog {
 
     public void setFuelVolumePrice(double fuelVolumePrice) {
         this.fuelVolumePrice = fuelVolumePrice;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if(obj instanceof FuelLog) {
+            FuelLog temp = (FuelLog) obj;
+            return temp.refuellingDate == refuellingDate;
+        }
+        return false;
     }
 }
