@@ -8,3 +8,5 @@ Open source android app to compute Fuel consumption
 
 
 Blog explaining the motivation of this project and command to execute coming soon.
+
+And finally got published [here](https://android.jlelse.eu/how-to-build-a-fuel-logger-android-app-guided-by-tests-7f7177f7ff39)
